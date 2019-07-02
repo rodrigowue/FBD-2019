@@ -16,17 +16,43 @@
 --	Recomenda-se que as instâncias sejam pensadas para testar se as consultas estão corretas, abrangendo vários resultados.
 --
 --	e.As consultas devem ser significativamente distintas entre si. Será considerada a utilidadee diversidadedas consultas.
+--==================================
 
 
--- > retorna o nickname da conta que paga a maior fatura
+--a.b> retorna o nickname da conta que paga a maior fatura
 select NICKNAME from conta natural join cobranca natural join fatura 
 group by VALOR, NICKNAME
 having VALOR = (select max(VALOR)from fatura);
+
+
+--a.b> Retorna nome do diretor do filme mais antigo
+select distinct NOMED from diretor
+where IDd in (select distinct IDd
+			 from dirige natural join midia
+			 group by ANO, IDd
+			 having ANO = (select min(ANO) from midia));
+
+
+--c.> Contas que não tem perfil KIDS
+select distinct NICKNAME
+from conta c1
+Where not exists (select * 
+	From possui natural join perfil
+	Where EMAIL = c1.EMAIL and
+ 	NOME_PERFIL IN (select distinct NOME_PERFIL
+	From possui natural join perfil
+	Where KIDS = '1'));
+
 
 --> Retorna email e numero de caracteres da senha de usuarios com senha fraca (senha<8)
 select EMAIL, SENHA_DIGEST from conta
 group by EMAIL
 having 8 > CHAR_LENGTH(SENHA_DIGEST);
 
+
 --> Titulo mais favoritado
 select max(distinct TITULO) from favoritos;
+
+--> Retorna o numero de temporadas de Cada Serie
+select distinct(NOME_MIDIA), count(IDt) from series natural join contem group by NOME_MIDIA;
+

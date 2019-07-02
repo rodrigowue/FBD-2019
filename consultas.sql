@@ -56,3 +56,19 @@ select max(distinct TITULO) from favoritos;
 --> Retorna o numero de temporadas de Cada Serie
 select distinct(NOME_MIDIA), count(IDt) from series natural join contem group by NOME_MIDIA;
 
+
+
+--==================================
+--Item2.b)Definir uma visãoútil a seu universo de discurso. Desenvolver duas consultasigualmente úteis que utilizem
+--==================================
+
+--> Visao util ao universo de discurso
+Create view lancamentos AS select * from midia
+group by NOME_MIDIA, ANO, SINOPSE, CLASSIFICACAO
+having ANO > '2018';
+
+--> Consulta 1 - Utilizando a view de lancamentos
+select distinct NOME_MIDIA,CLASSIFICACAO from lancamentos group by NOME_MIDIA, CLASSIFICACAO having CLASSIFICACAO > '18';
+
+--> Consulta 2 - Utilizando a view de lancamentos
+select distinct(NOME_ATOR), NOME_MIDIA from ator natural join atua natural join lancamentos;

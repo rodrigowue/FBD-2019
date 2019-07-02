@@ -40,7 +40,7 @@ insert into estudio values('Netflix','US');
 
 insert into conta values('joaozinho@bol.com.br','eugostodesorvete','jao_pokemon_2000','0');
 insert into conta values('mariazinha@yahoo.com.br','rebeldes1995','zinha23','0');
-insert into conta values('carlosrockandroll@terra.com.br','senhasecreta','alucard','0');
+insert into conta values('carlosrockandroll@terra.com.br','senha','alucard','0');
 insert into conta values('fausto@bol.com.br','selenagomez','olokinho','0');
 insert into conta values('pericles@exalta.com.br','billieeilish','superM4ssiv3St4r','0');
 

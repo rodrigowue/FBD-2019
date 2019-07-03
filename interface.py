@@ -70,24 +70,48 @@ def titulo_maisfav():
   input("Press [Enter] to continue...")
   menu()
 
+def temp_series():
+  postgreSQL_select_Query = "select distinct(NOME_MIDIA), count(IDt) from series natural join contem group by NOME_MIDIA;"
+  cursor.execute(postgreSQL_select_Query)
+  series = cursor.fetchall()
+  for serie in series:
+    print("A série:" + str(serie[0]) + " tem " + str(serie[1])+" temporadas")
+  input("Press [Enter] to continue...")
+  menu()
+
+
 def tempo_assistido():
   name = input("Tempo total assistido por?");
   postgreSQL_select_Query = "select sum(TEMPO_ASSISTIDO) from assiste where NOME_PERFIL='" + name + "'"
   cursor.execute(postgreSQL_select_Query)
   tempo = cursor.fetchone()
-  print("O perfil " + name + ", assistiu DataFlix por " + str(tempo[0]))
+  print("O perfil " + name + ", assistiu DataFlix por " + str(tempo[0])) + " (hh:mm:ss)"
   input("Press [Enter] to continue...")
   menu()
 
+
+def fatura():
+  email = input("Entre o Email ao qual se quer descobrir o valor das faturas: ");
+  postgreSQL_select_Query = "select VALOR from fatura natural join cobranca where EMAIL='" + email + "'"
+  cursor.execute(postgreSQL_select_Query)
+  faturas = cursor.fetchall()
+  print("Faturas do EMAIL:"+ email)
+  print("-----------------------------------------------------")
+  for fatura0 in faturas:
+  	print(fatura0[0])
+  input("Press [Enter] to continue...")
+  menu()
  
 menuItems = [
     { "Tempo assistido por [entrada]": tempo_assistido },
+    { "Faturas do EMAIL [entrada]": fatura },
     { "Contas com Senha Fraca": senha_fraca },
     { "Consultar Filmes": consulta_filmes },
     { "Conta que tem a maior fatura": conta_maior_fatura },
     { "Diretor do Filme mais Antigo Registrado": diretor_filme_mais_antigo },
     { "Contas que não são usadas por crianças": contas_adult_only },
     { "Midia Mais Favoritada": titulo_maisfav },
+    { "Numero de Temporadas por Series": temp_series },
     { "Exit": exit },
 ]
 

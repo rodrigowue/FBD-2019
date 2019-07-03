@@ -59,7 +59,7 @@ select distinct(NOME_MIDIA), count(IDt) from series natural join contem group by
 
 
 --==================================
---Item2.b)Definir uma visãoútil a seu universo de discurso. Desenvolver duas consultasigualmente úteis que utilizem
+--Item2.b)Definir uma visão útil a seu universo de discurso. Desenvolver duas consultasigualmente úteis que utilizem
 --==================================
 
 --> Visao util ao universo de discurso

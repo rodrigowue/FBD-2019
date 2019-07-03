@@ -10,4 +10,3 @@ CREATE TRIGGER compensa_valor
     AFTER DELETE ON fatura
     FOR EACH ROW
     EXECUTE PROCEDURE aumenta_fatura();
-

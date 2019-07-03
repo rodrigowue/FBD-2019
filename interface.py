@@ -31,7 +31,7 @@ def conta_maior_fatura():
   cursor.execute(postgreSQL_select_Query)
   print("Selecionando Tupla contendo o NICKNAME que tem a maior Fatura")
   user = cursor.fetchone()
-  print("A conta" + str(user) + "tem a maior fatura!")
+  print("A conta" + str(user[0]) + "tem a maior fatura!")
   input("Press [Enter] to continue...")
   menu()
 
@@ -40,7 +40,7 @@ def diretor_filme_mais_antigo():
   cursor.execute(postgreSQL_select_Query)
   diretores = cursor.fetchall()
   for diretor in diretores:
-  	print("O diretor" + str(diretor) + ", dirigiu o filme mais antigo registrado.")
+  	print("O diretor" + str(diretor[0]) + ", dirigiu o filme mais antigo registrado.")
   input("Press [Enter] to continue...")
   menu()
 
@@ -49,7 +49,24 @@ def contas_adult_only():
   cursor.execute(postgreSQL_select_Query)
   adults_only = cursor.fetchall()
   for adult in adults_only:
-    print("O conta" + str(adult) + ", não é utilizada por crianças.")
+    print("O conta" + str(adult[0]) + ", não é utilizada por crianças.")
+  input("Press [Enter] to continue...")
+  menu()
+
+def senha_fraca():
+  postgreSQL_select_Query = "select EMAIL, SENHA_DIGEST from conta group by EMAIL having 8 > CHAR_LENGTH(SENHA_DIGEST);"
+  cursor.execute(postgreSQL_select_Query)
+  noobies = cursor.fetchall()
+  for noob in noobies:
+    print("A conta de EMAIL:" + str(noob[0]) + "\nTem uma senha muito fraca! Senha:" + str(noob[1]))
+  input("Press [Enter] to continue...")
+  menu()
+
+def titulo_maisfav():
+  postgreSQL_select_Query = "select max(distinct TITULO) from favoritos;"
+  cursor.execute(postgreSQL_select_Query)
+  user = cursor.fetchone()
+  print("A midia mais favoritada é:" + str(user[0]))
   input("Press [Enter] to continue...")
   menu()
 
@@ -58,17 +75,19 @@ def tempo_assistido():
   postgreSQL_select_Query = "select sum(TEMPO_ASSISTIDO) from assiste where NOME_PERFIL='" + name + "'"
   cursor.execute(postgreSQL_select_Query)
   tempo = cursor.fetchone()
-  print("O perfil" + name + ", assistiu DataFlix por" + str(tempo).split('.')[0])
-  bla=input("Press [Enter] to continue...")
+  print("O perfil " + name + ", assistiu DataFlix por " + str(tempo[0]))
+  input("Press [Enter] to continue...")
   menu()
 
  
 menuItems = [
     { "Tempo assistido por [entrada]": tempo_assistido },
+    { "Contas com Senha Fraca": senha_fraca },
     { "Consultar Filmes": consulta_filmes },
     { "Conta que tem a maior fatura": conta_maior_fatura },
     { "Diretor do Filme mais Antigo Registrado": diretor_filme_mais_antigo },
     { "Contas que não são usadas por crianças": contas_adult_only },
+    { "Midia Mais Favoritada": titulo_maisfav },
     { "Exit": exit },
 ]
 
@@ -92,9 +111,7 @@ try:
                                   port = "5432",
                                   database = "postgres")
     cursor = connection.cursor()
-    # Print PostgreSQL Connection properties
     print ( connection.get_dsn_parameters(),"\n")
-    # Print PostgreSQL version
     cursor.execute("SELECT version();")
     record = cursor.fetchone()
     print("You are connected to - ", record,"\n")

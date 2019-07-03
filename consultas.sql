@@ -56,7 +56,11 @@ select max(distinct TITULO) from favoritos;
 --> Retorna o numero de temporadas de Cada Serie
 select distinct(NOME_MIDIA), count(IDt) from series natural join contem group by NOME_MIDIA;
 
+--> Retorna o tempo total que um determinado usuário passou assistindo
+select sum(TEMPO_ASSISTIDO) from assiste where NOME_PERFIL='joao'
 
+--> Retorna o valor das faturas de um determinado usuario
+select VALOR from fatura natural join cobranca where EMAIL='joaozinho@bol.com.br'
 
 --==================================
 --Item2.b)Definir uma visão útil a seu universo de discurso. Desenvolver duas consultasigualmente úteis que utilizem

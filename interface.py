@@ -106,7 +106,7 @@ menuItems = [
     { "Tempo assistido por [entrada]": tempo_assistido },
     { "Faturas do EMAIL [entrada]": fatura },
     { "Contas com Senha Fraca": senha_fraca },
-    { "Consultar Filmes": consulta_filmes },
+    { "Consultar Midias": consulta_filmes },
     { "Conta que tem a maior fatura": conta_maior_fatura },
     { "Diretor do Filme mais Antigo Registrado": diretor_filme_mais_antigo },
     { "Contas que não são usadas por crianças": contas_adult_only },

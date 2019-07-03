@@ -80,7 +80,6 @@ create table midia (
 	primary key(NOME_MIDIA));
 
 create table filmes (
-	ESCOLHAS text,
 	STREAMING_POINTER text not null,
 	PREVIAF text not null,
 	DURACAOF time not null,
@@ -136,7 +135,6 @@ create table episodio(
 	IDe				integer not null,
 	DURACAOE		time not null,
 	SINOPSEE		text not null,
-	ESCOLHAS 		text,
 	STREAMING_POINTER text not null,
 	primary key(IDe));
 

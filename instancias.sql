@@ -57,11 +57,11 @@ insert into midia values('Seventh Seal','1957','Um cara joga xadrez com a morte 
 insert into midia values('Detetive Pikachu','2019','Um jovem descontente investiga a morte de seu pai com um rato eletrico','21');
 insert into midia values('Bleach','2019','um jovem que ve gente morta','5');
 
-insert into filmes values('Vingadores Ultimato','2019','thanos morre','0','0','server_do_cleber/vigadores_acabo.mp4','server_do_cleber/prev_ving_acabo.mp4','03:02:06');
-insert into filmes values('Velozes e Furiosos Desafio em Porto Alegre','2020','Os motoristas do D43 e T10 entram em uma disputa nunca vista antes pelas ruas da capital gaucha','21','0','server_do_cleber/tokyodrift.mp4','server_do_cleber/prev_drift.mp4','01:45:01');
-insert into filmes values('Seventh Seal','1957','Um cara joga xadrez com a morte e morre','0','0','baiadospirata/setimo_selo.mp4','baiadospirata/prev_seventh_seal.mp4','01:36:06');
-insert into filmes values('Detetive Pikachu','2019','Um jovem descontente investiga a morte de seu pai com um rato eletrico','21','0','baiadospirata/detetive_pikachu.mp4','baiadospirata/prev_pikachu.mp4','02:02:03');
-insert into filmes values('Bleach','2019','um jovem que ve gente morta','5','0','baiadospirata/bleach_live_action.mp4','server_do_cleber/prev_bleach.mp4','01:52:01');
+insert into filmes values('Vingadores Ultimato','2019','thanos morre','0','server_do_cleber/vigadores_acabo.mp4','server_do_cleber/prev_ving_acabo.mp4','03:02:06');
+insert into filmes values('Velozes e Furiosos Desafio em Porto Alegre','2020','Os motoristas do D43 e T10 entram em uma disputa nunca vista antes pelas ruas da capital gaucha','21','server_do_cleber/tokyodrift.mp4','server_do_cleber/prev_drift.mp4','01:45:01');
+insert into filmes values('Seventh Seal','1957','Um cara joga xadrez com a morte e morre','0','baiadospirata/setimo_selo.mp4','baiadospirata/prev_seventh_seal.mp4','01:36:06');
+insert into filmes values('Detetive Pikachu','2019','Um jovem descontente investiga a morte de seu pai com um rato eletrico','21','baiadospirata/detetive_pikachu.mp4','baiadospirata/prev_pikachu.mp4','02:02:03');
+insert into filmes values('Bleach','2019','um jovem que ve gente morta','5','baiadospirata/bleach_live_action.mp4','server_do_cleber/prev_bleach.mp4','01:52:01');
 
 insert into series values('GoT','2019','um jovem que ve gente morta','5','1');
 insert into series values('Paradas Sinistras','2019','um jovem que ve gente morta','5','1');
@@ -98,11 +98,11 @@ insert into temporada values('778','2009','Tem uma fumaca na ilha que desaparece
 insert into temporada values('779','2010','Se nao apertar o botao todo mundo morre da ilha ','prev_lost03.mp4','7');
 insert into temporada values('780','2011','Ta todo mundo morto ','prev_lost06.mp4','7');
 
-insert into episodio values('666','01:35:02','Ferrou geral, pegou fogo no reator nuclear', '0' , 'chernobyls01e01.mp4');
-insert into episodio values('999','01:30:00','Ferrou mais ainda, os cara sao pilantra.', '0', 'chernobyls01e01.mp4');
-insert into episodio values('777','00:52:06','A menina tem altos poder da radiacao que ele tomou na cabeca', '0', 'paradas_sinistras01e01.mp4');
-insert into episodio values('555','00:55:01','O Jon Snow e muito perdido', '0', 'gots06e04.mp4');
-insert into episodio values('111','01:35:02','O cara faz drift para fazer teleentrega de tofu eba a agua', '0', 'initialds01e01.mp4');
+insert into episodio values('666','01:35:02','Ferrou geral, pegou fogo no reator nuclear' , 'chernobyls01e01.mp4');
+insert into episodio values('999','01:30:00','Ferrou mais ainda, os cara sao pilantra.', 'chernobyls01e01.mp4');
+insert into episodio values('777','00:52:06','A menina tem altos poder da radiacao que ele tomou na cabeca', 'paradas_sinistras01e01.mp4');
+insert into episodio values('555','00:55:01','O Jon Snow e muito perdido', 'gots06e04.mp4');
+insert into episodio values('111','01:35:02','O cara faz drift para fazer teleentrega de tofu eba a agua', 'initialds01e01.mp4');
 
 --=================================================
 --Relacionamentos n-m

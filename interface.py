@@ -101,10 +101,34 @@ def fatura():
   	print(fatura0[0])
   input("Press [Enter] to continue...")
   menu()
+
+def imprime_todas_faturas():
+  postgreSQL_select_Query = "select VALOR from fatura"
+  cursor.execute(postgreSQL_select_Query)
+  filmes = cursor.fetchall()
+  for row in filmes:
+    print(row)
+
+def distribui_valor_nas_faturas():
+  print("-----------------------------------------------------")
+  print("Faturas:")
+  imprime_todas_faturas();
+  print("-----------------------------------------------------")
+  Valor = input("Entre o Valor que Gostaria de Distribuir no Valor de Todas as Faturas (00.00):\n");
+  postgreSQL_select_Query = "CALL aumenta_fatura('" + Valor + "')"
+  cursor.execute(postgreSQL_select_Query)
+  print("-----------------------------------------------------")
+  print("Resultado:")
+  imprime_todas_faturas();
+  print("-----------------------------------------------------")
+  input("Press [Enter] to continue...")
+  menu()
+ 
  
 menuItems = [
     { "Tempo assistido por [entrada]": tempo_assistido },
     { "Faturas do EMAIL [entrada]": fatura },
+    { "Dilui um Valor Monetario por Todas as Faturas [Procedure]": distribui_valor_nas_faturas },
     { "Contas com Senha Fraca": senha_fraca },
     { "Consultar Midias": consulta_filmes },
     { "Conta que tem a maior fatura": conta_maior_fatura },

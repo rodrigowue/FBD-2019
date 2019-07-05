@@ -3,7 +3,9 @@
 ------------------------------------
 --FBD 2019/1
 --==================================
-
+drop view if exists lancamentos;
+drop trigger IF EXISTS check_conta on conta;
+drop procedure IF EXISTS aumenta_fatura; 
 drop table if exists classifica;
 drop table if exists possui;
 drop table if exists cobranca;

@@ -102,6 +102,18 @@ def fatura():
   input("Press [Enter] to continue...")
   menu()
 
+
+def insere_conta():
+  email = input("Entre o Email: ");
+  nickname = input("Entre o Nickname: ");
+  postgreSQL_select_Query = "insert into conta values('"+email+"','eugostodesorvete','"+nickname+"','0');"
+  cursor.execute(postgreSQL_select_Query)
+  faturas = cursor.fetchall()
+  for fatura0 in faturas:
+    print(fatura0)
+  input("Press [Enter] to continue...")
+  menu()
+
 def imprime_todas_faturas():
   postgreSQL_select_Query = "select VALOR from fatura"
   cursor.execute(postgreSQL_select_Query)
@@ -136,6 +148,7 @@ menuItems = [
     { "Contas que não são usadas por crianças": contas_adult_only },
     { "Midia Mais Favoritada": titulo_maisfav },
     { "Numero de Temporadas por Series": temp_series },
+    { "Insere Conta": insere_conta },
     { "Exit": exit },
 ]
 
